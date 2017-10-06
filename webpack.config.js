@@ -3,7 +3,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/app.js',
     output: {
         filename: 'scripts.js',
         path: path.resolve(__dirname, 'dist')
@@ -33,6 +33,16 @@ module.exports = {
                 options: {
                     outputPath: 'fonts/'
                 }
+            },
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['env']
+                    }
+                }
             }
         ]
     },
@@ -41,8 +51,9 @@ module.exports = {
     ],
     watch: true,
     resolve: {
+        extensions: ['.js'],
         alias: {
-            'vue': 'vue/dist/vue.common.js',
+            'vue': 'vue/dist/vue.js',
         }
     }
 };
