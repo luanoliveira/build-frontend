@@ -30,10 +30,12 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin("styles.css"),
-        new webpack.ProvidePlugin({
-            Vue: ['vue/dist/vue.esm.js', 'default']
-        })
+        new ExtractTextPlugin("styles.css")
     ],
     watch: true,
+    resolve: {
+        alias: {
+            'vue': 'vue/dist/vue.common.js',
+        }
+    }
 };
