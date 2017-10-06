@@ -26,6 +26,13 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: ['vue-loader']
+            },
+            {
+                test: /\.(eot|woff|woff2|svg|ttf|)$/,
+                loader: "file-loader",
+                options: {
+                    outputPath: 'fonts/'
+                }
             }
         ]
     },
