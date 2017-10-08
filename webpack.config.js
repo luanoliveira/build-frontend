@@ -3,9 +3,12 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
 
 module.exports = {
-    entry: './src/app.js',
+    entry: {
+        site: './src/site.js',
+        admin: './src/admin.js'
+    },
     output: {
-        filename: 'scripts.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'dist')
     },
     module: {
@@ -14,13 +17,30 @@ module.exports = {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
-                    use: ['css-loader']
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                minimize: true
+                            }
+                        }
+                    ]
                 })
             },
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader', 'sass-loader']
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                minimize: true
+                            }
+                        },
+                        {
+                            loader: 'sass-loader'
+                        }
+                    ]
                 })
             },
             {
@@ -47,13 +67,19 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin("styles.css")
+        new ExtractTextPlugin("[name].css"),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: true
+            }
+        })
     ],
     watch: true,
     resolve: {
-        extensions: ['.js'],
+        extensions: ['.js', '.scss'],
         alias: {
             'vue': 'vue/dist/vue.js',
+            'font-awesome': 'font-awesome/scss/font-awesome.scss',
         }
     }
 };
