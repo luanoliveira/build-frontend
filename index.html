@@ -8,16 +8,12 @@
 <body>
 	<div id="app">
         <div class="container">
-            
-    		<i class="fa fa-address-book-o" aria-hidden="true"></i>
     		
-            <device name="Teste"></device>
+            <div v-for="device in devices">
+                <device :name="device.name" :icon="device.icon"></device>
 
-    		<post></post>
-            <post></post>
-            <post></post>
-
-            <my-button></my-button>
+                <input type="text" v-model="device.name">
+            </div>
 
         </div><!-- .container -->
 	</div>
