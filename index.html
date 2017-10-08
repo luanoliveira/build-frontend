@@ -9,11 +9,7 @@
 	<div id="app">
         <div class="container">
     		
-            <div v-for="device in devices">
-                <device :name="device.name" :icon="device.icon"></device>
-
-                <input type="text" v-model="device.name">
-            </div>
+            <device-container :devices="devices"></device-container>
 
         </div><!-- .container -->
 	</div>
