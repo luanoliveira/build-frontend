@@ -1,5 +1,7 @@
 import Vue from 'vue'
 
+Vue.config.productionTip = true;
+
 let app = new Vue({
 	el: '#app',
 	data: {

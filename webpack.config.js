@@ -55,6 +55,13 @@ module.exports = {
                 }
             },
             {
+                test: /\.(png|jpg|gif)$/,
+                loader: 'file-loader',
+                options: {
+                    outputPath: 'images/'
+                }
+            },
+            {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
