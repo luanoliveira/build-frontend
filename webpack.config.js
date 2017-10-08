@@ -72,6 +72,11 @@ module.exports = {
             compress: {
                 warnings: true
             }
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            Popper: 'popper.js'
         })
     ],
     watch: true,
@@ -79,6 +84,7 @@ module.exports = {
         extensions: ['.js', '.scss'],
         alias: {
             'vue': 'vue/dist/vue.js',
+            'bootstrap-sass': 'bootstrap/scss/bootstrap.scss',
             'font-awesome': 'font-awesome/scss/font-awesome.scss',
         }
     }
