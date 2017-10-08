@@ -1,10 +1,8 @@
-<template>
-	<div class="device">
-		<div class="device-icon" v-if="icon">
-			<i :class="'fa fa-'+icon" aria-hidden="true"></i>
-		</div>
-		<span class="device-name">{{ name }}</span>
-	</div>
+<template lang="pug">
+	div(class="device")
+		div(class="device-icon" v-if="icon")
+			i(v-bind:class="'fa fa-'+icon")
+		span(class='device-name') {{ name }}
 </template>
 
 <script>
